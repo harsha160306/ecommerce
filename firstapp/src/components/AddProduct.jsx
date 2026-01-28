@@ -1,20 +1,30 @@
-import React, { useState } from 'react'
+ import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 export default function AddProduct() {
     const [name,setName]=useState("")
     const [price,setPrice]=useState("")
     const [description,setDescription]=useState("")
-    const [category,setCategory]=useState("")
+    const [Transmission,setTransmission]=useState("")
     const [stock,setStock]=useState("")
     const role=localStorage.getItem("role")
     const navigate=useNavigate()
     async function addProduct(e){
         e.preventDefault()
         const newProduct={
-            name,price,description,category,stock,role
+            name,price,description,Transmission,stock:Number(stock),role
         }
-        axios.post("",newProduct)
+        axios.post("http://localhost:4000/api/product/add",newProduct)
+          .then((res)=>{
+            console.log(res)
+            if(res.status==200){
+              alert("Product added successfull")
+              navigate("/")
+            }
+          })
+          .catch((err)=>{
+            alert(err.response.data.message)
+          })
     }
 
     return (
@@ -24,12 +34,12 @@ export default function AddProduct() {
           <h2 className='text-center'>Add a Product</h2>
           <div className='mb-3'>
               <label className="form-label">Name </label>
-              <input type="text" className="form-control" name="name" value={name} placeholder="Ex:AC" onChange={(e)=>setName(e.target.value)}/>
+              <input type="text" className="form-control" name="name" value={name} placeholder="Ex:Hyundai" onChange={(e)=>setName(e.target.value)}/>
             </div>
 
             <div className='mb-3'>
-              <label className="form-label">Price </label>
-              <input type="email" className="form-control" name="price" value={price} placeholder="Ex:****" onChange={(e)=>setPrice(e.target.value)}/>
+              <label className="form-label">Price per Day </label>
+              <input type="text" className="form-control" name="price" value={price} placeholder="Ex:****" onChange={(e)=>setPrice(e.target.value)}/>
             </div>
             <div className='mb-3'>
               <label className="form-label">Description </label>
@@ -37,8 +47,8 @@ export default function AddProduct() {
             </div>
 
             <div className='mb-3'>
-              <label className="form-label">Category</label>
-              <input type="text" placeholder="Ex:electric/home" className="form-control" name="category" value={category} onChange={(e)=>setCategory(e.target.value)}/>
+              <label className="form-label">Transmission</label>
+              <input type="text" placeholder="Ex:Automatic/Manual" className="form-control" name="Transmission" value={Transmission} onChange={(e)=>setTransmission(e.target.value)}/>
             </div>
 
             <div className='mb-3'>

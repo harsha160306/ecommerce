@@ -41,7 +41,7 @@ export default function Register() {
       <div className="container">
         <div className="register-box mx-auto">
           <h2 className="text-center fw-bold" style={{ color: "#fff" }}>Registration Form</h2>
-          <p className="text-center text-muted mb-4">
+          <p className="text-center mb-4" style={{ color: "#ddd" }}>
             Fill out the form carefully for registration
           </p>
 
