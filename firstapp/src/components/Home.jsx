@@ -34,10 +34,10 @@ export default function Home() {
                   <div className="card h-100">
                       <div className="card-body">
                         <h5 className="card-title"><b>Name:</b>{i.name}</h5>
-                        <p className="card-text"><b>Price: </b>{i.price}</p>
-                        <p className="card-text"><b>Category: </b>{i.category}</p>
+                        <p className="card-text"><b>Price Per Day: </b>{i.price}</p>
+                        <p className="card-text"><b>Description: </b>{i.description}</p>
                         <p className="card-text"><b>Transmission: </b>{i.Transmission}</p>
-                        <p className="card-text"><b>Stock: </b>{i.stock}</p>
+                        <p className="card-text"><b>Available: </b>{i.Available}</p>
                         {
                           role=="admin"?(
                             <button onClick={()=>deleteProduct(i._id)} className='btn btn-danger'>Delete</button>

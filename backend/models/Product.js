@@ -13,7 +13,7 @@ const Product = mongoose.Schema({
     Transmission: {
         type: String
     },
-    stock: {
+    Available: {
         type: Number
     },
     createdAt: {

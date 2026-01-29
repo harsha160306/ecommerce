@@ -11,9 +11,9 @@ const isAdmin = (req, res, next) => {
 
 router.post("/add", isAdmin,async (req, res) => {
     try {
-        const { name, price, discription, Transmission, stock } = req.body
+        const { name, price, description, Transmission, Available } = req.body
         const newProduct = new Product({
-            name, price, discription, Transmission, stock
+            name, price, description, Transmission, Available
         })
         await newProduct.save()
         return res.status(200).json({ "message": "Product added sucessfully" })

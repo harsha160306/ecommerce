@@ -6,13 +6,13 @@ export default function AddProduct() {
     const [price,setPrice]=useState("")
     const [description,setDescription]=useState("")
     const [Transmission,setTransmission]=useState("")
-    const [stock,setStock]=useState("")
+    const [Available,setAvailable]=useState("")
     const role=localStorage.getItem("role")
     const navigate=useNavigate()
     async function addProduct(e){
         e.preventDefault()
         const newProduct={
-            name,price,description,Transmission,stock:Number(stock),role
+            name,price,description,Transmission,Available:Number(Available),role
         }
         axios.post("http://localhost:4000/api/product/add",newProduct)
           .then((res)=>{
@@ -52,8 +52,8 @@ export default function AddProduct() {
             </div>
 
             <div className='mb-3'>
-              <label className="form-label">Stock </label>
-              <input type="text" placeholder="Ex:Count " className="form-control" name="stock" value={stock} onChange={(e)=>setStock(e.target.value)}/>
+              <label className="form-label">Available</label>
+              <input type="text" placeholder="Ex:Count " className="form-control" name="Available" value={Available} onChange={(e)=>setAvailable(e.target.value)}/>
             </div>
             <div className='mb-3 d-grid gap-2'>
               <button className='btn btn-success btn-lg'>Add Product</button>
