@@ -1,4 +1,4 @@
- import React, { useState } from 'react'
+import React, { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 export default function AddProduct() {
@@ -14,7 +14,7 @@ export default function AddProduct() {
         const newProduct={
             name,price,description,Transmission,Available:Number(Available),role
         }
-        axios.post("http://localhost:4000/api/product/add",newProduct)
+        axios.post("https://ecommerce-zuyo.onrender.com/api/product/add",newProduct)
           .then((res)=>{
             console.log(res)
             if(res.status==200){
